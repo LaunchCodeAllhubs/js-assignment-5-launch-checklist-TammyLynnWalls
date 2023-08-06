@@ -32,58 +32,24 @@ function validateInput(testInput) {
           let rtrnStatement ="";
           
 
-        //   function fieldValidation (pilotVal,copilotVal,fuelVal,cargoVal) {
-        //   if (fieldValue === "") {
-            
-        //     event.preventDefault();
-        //     rtrnStatement += "Empty";{
-        //       alert("all fields are required!")
-        //     }
-        //   }
-        // };
 
-        // fieldValidation(pilotName.value,copilotName.value,fuelLevel.value,cargoMass.value);
-        // fieldValidation(copilotName.value);
-        // fieldValidation(fuelLevel.value);
-        // fieldValidation(cargoMass.value);
+        const fieldValues = [pilotName.value,copilotName.value,fuelLevel.value, cargoMass.value]
           
-
+         
           if (pilotName.value === "" || copilotName.value === "" ||fuelLevel.value === "" ||cargoMass.value === "") {
             alert("all fields are required!")
             event.preventDefault();
             rtrnStatement += "Empty";
-          }
-
-        //     if (fuelLevel.value === ""|| cargoMass.value === "") {
-        //         alert("all fields are required!")
-        //         event.preventDefault();
-        //         rtrnStatement += "Empty";
-                            
-        //   }
-        //let alphabet ="abcdefghijklmnopqrstuvwxyz";
-
-        //for 
-
-
-        // if (isalpha (pilotName.value)||isalpha (copilotName.value)) {
-        //   alert("Please enter a valid name");
-        //   event.preventDefault();
-        //   rtrnStatement += "Not a String";
-        // } else{
-        //   //alert("yea")
-        //   // event.preventDefault();
-        //   rtrnStatement += "Is a Number";
-          
-        // }
+          };
+        
 
           if (isNaN(fuelLevel.value)||isNaN(cargoMass.value)) {
             alert("nums only for fuel and cargo");
             event.preventDefault();
-            rtrnStatement += "Not a Number";
-          } else{
-            //alert("yea")
-            // event.preventDefault();
-            rtrnStatement += "Is a Number";
+            rtrnStatement += " Not a Number";
+          } else if (!isNaN(fuelLevel.value)||!isNaN(cargoMass.value)){
+            
+            rtrnStatement += " Is a Number";
             
           }
         console.log(rtrnStatement);
