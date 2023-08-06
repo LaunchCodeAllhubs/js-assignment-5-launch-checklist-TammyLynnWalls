@@ -41,6 +41,15 @@ function validateInput(testInput) {
             event.preventDefault();
             rtrnStatement += "Empty";
           };
+
+          if ((!isNaN(pilotName.value)) || (!isNaN(copilotName.value)) ){
+            alert("Please enter a valid name!")
+            event.preventDefault();
+            rtrnStatement += "Not a string";
+          // } else if ((isNaN(pilotName.value)) && (isNaN(copilotName.value))){
+          //   rtrnStatement += "Is a string";
+          // }
+          };
         
 
           if (isNaN(fuelLevel.value)||isNaN(cargoMass.value)) {
@@ -51,7 +60,7 @@ function validateInput(testInput) {
             
             rtrnStatement += " Is a Number";
             
-          }
+          };
         console.log(rtrnStatement);
         return rtrnStatement;
             
