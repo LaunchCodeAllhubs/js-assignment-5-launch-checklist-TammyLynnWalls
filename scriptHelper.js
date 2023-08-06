@@ -4,6 +4,7 @@
 validateInput();
 //console.log(validateInput())
 
+
 require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
@@ -126,13 +127,17 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch().then( function(response) {
+    planetsReturned = await fetch('https://handlers.education.launchcode.org/static/planets.json').then( function(response) {
+      return response.json();
         });
 
     return planetsReturned;
 }
 
-function pickPlanet(planets) {
+function pickPlanet(planetsReturned) {
+  let planetNumber = Math.floor.apply(Math.random()*6);
+  return planetsReturned[planetNumber].name;
+
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
