@@ -68,28 +68,50 @@ function validateInput(testInput) {
         });
       });
 }
+let faultyItems = document.getElementById("faultyItems");
+    faultyItems.style.visibility = "visible";
 
+    
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     validateInput(testInput);
 
     //Using template literals, update the li elements pilotStatus and copilotStatus to include the pilot's name and the co-pilot's name.
-    const faultyItems = getElementById("faultyItems");
+
+    // ???let faultyItems = document.getElementById("faultyItems");
+        
+    let pilotStatus = document.getElementById("pilotStatus");
+    pilotStatus.innerHTML = `${pilotName.value} is ready for launch `;
+    let copilotStatus = document.getElementById("copilotStatus");copilotStatus.innerHTML = `${copilotName.value} is ready for launch`;
+
+    let fuelStatus = document.getElementById("fuelStatus");
+    let launchStatus = document.getElementById('launchStatus');
     
-    
-    document.getElementById("pilotStatus").innerHTML = `${pilotName.value}`;
-    document.getElementById("copilotStatus").innerHTML = `${copilotName.value}`;
 
     if (fuelLevel.value<10000){
       //why is this not visible??? is this formSubmission function being called???
-      faultyItems.style.visibility = "visible";
+      fuelStatus.innerHTML = `${fuelLevel.value} is not enough fuel for the journey.`;
+      //faultyItems.style.visibility = "visible";
+      list.style.visibility = 'visible';//?????is this the way?
+      launchStatus.innerHTML = "Shuttle not ready for launch"
+      launchStatus.style.color = "#C7254E";
     };
-
 
     if (cargoMass.value>10000){
-
-      faultyItems.style.visibility = "visible";
+      //why is this not visible??? is this formSubmission function being called???
+      cargoStatus.innerHTML = `${cargoMass.value} is too much mass for the shuttle to take off.`;
+      //faultyItems.style.visibility = "visible";
+      list.style.visibility = 'visible';//?????is this the way?
+      launchStatus.innerHTML = "Shuttle not ready for launch"
+      launchStatus.style.color = "#C7254E";
     };
+
+    if (fuelLevel.value>=10000 && cargoMass.value<=10000) {
+      launchStatus.innerHTML = "Shuttle is ready for launch"
+      launchStatus.style.color = "#419F6A";
+    };
+
+
 
 //have these here to see the ids
     // pilotStatus.innerHTML = `${pilotName.value}`;
