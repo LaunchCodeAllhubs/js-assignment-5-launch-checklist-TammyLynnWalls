@@ -29,31 +29,65 @@ function validateInput(testInput) {
           let copilotName =  document.querySelector("input[name=copilotName]");
           let fuelLevel =  document.querySelector("input[name=fuelLevel]");
           let cargoMass =  document.querySelector("input[name=cargoMass]");
+          let rtrnStatement ="";
           
 
-          if (pilotName.value === "" || copilotName.value === "") {
+        //   function fieldValidation (pilotVal,copilotVal,fuelVal,cargoVal) {
+        //   if (fieldValue === "") {
+            
+        //     event.preventDefault();
+        //     rtrnStatement += "Empty";{
+        //       alert("all fields are required!")
+        //     }
+        //   }
+        // };
+
+        // fieldValidation(pilotName.value,copilotName.value,fuelLevel.value,cargoMass.value);
+        // fieldValidation(copilotName.value);
+        // fieldValidation(fuelLevel.value);
+        // fieldValidation(cargoMass.value);
+          
+
+          if (pilotName.value === "" || copilotName.value === "" ||fuelLevel.value === "" ||cargoMass.value === "") {
             alert("all fields are required!")
             event.preventDefault();
-            return "Empty";
+            rtrnStatement += "Empty";
           }
 
-            if (fuelLevel.value === ""|| cargoMass.value === "") {
-                alert("all fields are required!")
-                event.preventDefault();
-                return "Empty";
+        //     if (fuelLevel.value === ""|| cargoMass.value === "") {
+        //         alert("all fields are required!")
+        //         event.preventDefault();
+        //         rtrnStatement += "Empty";
                             
-          }
+        //   }
+        //let alphabet ="abcdefghijklmnopqrstuvwxyz";
+
+        //for 
+
+
+        // if (isalpha (pilotName.value)||isalpha (copilotName.value)) {
+        //   alert("Please enter a valid name");
+        //   event.preventDefault();
+        //   rtrnStatement += "Not a String";
+        // } else{
+        //   //alert("yea")
+        //   // event.preventDefault();
+        //   rtrnStatement += "Is a Number";
+          
+        // }
+
           if (isNaN(fuelLevel.value)||isNaN(cargoMass.value)) {
             alert("nums only for fuel and cargo");
             event.preventDefault();
-            return "Not a Number";
+            rtrnStatement += "Not a Number";
           } else{
             //alert("yea")
             // event.preventDefault();
-            return "Is a Number";
+            rtrnStatement += "Is a Number";
             
           }
-       
+        console.log(rtrnStatement);
+        return rtrnStatement;
             
           
         });
@@ -65,7 +99,29 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     validateInput(testInput);
 
     //Using template literals, update the li elements pilotStatus and copilotStatus to include the pilot's name and the co-pilot's name.
+    const faultyItems = getElementById("faultyItems");
+    
+    
+    document.getElementById("pilotStatus").innerHTML = `${pilotName.value}`;
+    document.getElementById("copilotStatus").innerHTML = `${copilotName.value}`;
 
+    if (fuelLevel.value<10000){
+      //why is this not visible??? is this formSubmission function being called???
+      faultyItems.style.visibility = "visible";
+    };
+
+
+    if (cargoMass.value>10000){
+
+      faultyItems.style.visibility = "visible";
+    };
+
+//have these here to see the ids
+    // pilotStatus.innerHTML = `${pilotName.value}`;
+    //                <li id="pilotStatus" data-testid="pilotStatus">Pilot Ready</li>
+    //                 <li id="copilotStatus" data-testid="copilotStatus">Co-pilot Ready</li>
+    //                 <li id="fuelStatus" data-testid="fuelStatus">Fuel level high enough for launch</li>
+    //                 <li id="cargoStatus" data-testid="cargoStatus">Cargo mass low enough for launch</li>
 
    
 }
