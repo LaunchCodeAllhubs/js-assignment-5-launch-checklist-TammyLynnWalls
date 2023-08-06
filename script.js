@@ -1,27 +1,42 @@
 // Write your JavaScript code here!
 
-const { formSubmission, pickPlanet, addDestinationInfo } = require("./scriptHelper");
+
 
 
 
 window.addEventListener("load", function() {
-    formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
-
+   
    let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-   let result = myFetch();
-   let listedPlanetsResponse;
+   
+   let listedPlanetsResponse = myFetch();
    listedPlanetsResponse.then(function (result) {
        listedPlanets = result;
        console.log(listedPlanets);
    }).then(function () {
        console.log(listedPlanets);
        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-       pickPlanet();
-       addDestinationInfo();
+       let pickedPlanet = pickPlanet(listedPlanets);
+       addDestinationInfo(document, pickedPlanet.name, pickedPlanet.diameter, pickedPlanet.star, pickedPlanet.distance, pickedPlanet.moons, pickedPlanet.image );
        
    })
-   
+        let form = document.querySelector("form");
+        let list = document.getElementById("faultyItems");
+            form.addEventListener("submit", function(event){
+            event.preventDefault();
+            console.log(event);
+            let  pilotName = document.querySelector("input[name=pilotName]");
+            let pname = pilotName.value;
+            let copilotName =  document.querySelector("input[name=copilotName]");
+            let cname = copilotName.value;
+            let fuelLevel =  document.querySelector("input[name=fuelLevel]");
+            let fulevel = Number(fuelLevel.value);
+            let cargoMass =  document.querySelector("input[name=cargoMass]");
+            let carMas = Number(cargoMass.value);
+            formSubmission(document, list, pname, cname, fulevel, carMas);
+
+
+        })
    
 });
 
