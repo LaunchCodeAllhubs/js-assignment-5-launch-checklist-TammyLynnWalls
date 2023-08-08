@@ -40,51 +40,6 @@ function validateInput(testInput) {
   }
 
   
-    // window.addEventListener("load", function() {
-    //     let form = document.querySelector("form");
-    //     form.addEventListener("submit", function() {
-    //       let  pilotName = document.querySelector("input[name=pilotName]");
-    //       let copilotName =  document.querySelector("input[name=copilotName]");
-    //       let fuelLevel =  document.querySelector("input[name=fuelLevel]");
-    //       let cargoMass =  document.querySelector("input[name=cargoMass]");
-    //       let rtrnStatement ="";
-          
-
-
-    //     const fieldValues = [pilotName.value,copilotName.value,fuelLevel.value, cargoMass.value]
-          
-         
-    //       if (pilotName.value === "" || copilotName.value === "" ||fuelLevel.value === "" ||cargoMass.value === "") {
-    //         alert("all fields are required!")
-    //         event.preventDefault();
-    //         rtrnStatement += "Empty";
-    //       };
-
-    //       if ((!isNaN(pilotName.value)) || (!isNaN(copilotName.value)) ){
-    //         alert("Please enter a valid name!")
-    //         event.preventDefault();
-    //         rtrnStatement += "Not a string";
-    //       // } else if ((isNaN(pilotName.value)) && (isNaN(copilotName.value))){
-    //       //   rtrnStatement += "Is a string";
-    //       // }
-    //       };
-        
-
-    //       if (isNaN(fuelLevel.value)||isNaN(cargoMass.value)) {
-    //         alert("nums only for fuel and cargo");
-    //         event.preventDefault();
-    //         rtrnStatement += " Not a Number";
-    //       } else if (!isNaN(fuelLevel.value)||!isNaN(cargoMass.value)){
-            
-    //         rtrnStatement += " Is a Number";
-            
-    //       };
-    //     console.log(rtrnStatement);
-    //     return rtrnStatement;
-            
-          
-    //     });
-    //   });
 }
 let faultyItems = document.getElementById("faultyItems");
     faultyItems.style.visibility = "visible";
@@ -96,6 +51,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   let pilotStatus = document.getElementById("pilotStatus");
     
   let copilotStatus = document.getElementById("copilotStatus");
+
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" ||validateInput(fuelLevel) === "Empty" ||validateInput(cargoLevel) === "Empty") {
               alert("all fields are required!")
     }
@@ -122,15 +78,13 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
       //why is this not visible??? is this formSubmission function being called???
       cargoStatus.innerHTML = `Cargo is too heavy for the shuttle to take off.`;
       fuelStatus.innerHTML = `There is enough fuel for the journey.`;
-      
-      
+           
       launchStatus.innerHTML = "Shuttle not ready for launch"
       launchStatus.style.color = "#C7254E";
     } else if (cargoLevel>10000 && fuelLevel < 10000){
       cargoStatus.innerHTML = `Cargo is too heavy for the shuttle to take off.`;
       fuelStatus.innerHTML = `There is not enough fuel for the journey.`;
-      
-      
+            
       launchStatus.innerHTML = "Shuttle not ready for launch"
       launchStatus.style.color = "#C7254E";
       
